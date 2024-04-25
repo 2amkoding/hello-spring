@@ -18,7 +18,7 @@ public class HelloController {
 
     @GetMapping("goodbye")
     @ResponseBody
-    public String hello() {
+    public String goodbye() {
         return "Peace-out, Spring!";
     }
 }
