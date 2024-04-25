@@ -9,10 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 public class HelloController {
 
-    @GetMapping
+    // Handles request at path /hello
+    @GetMapping("hello")
     @ResponseBody
     public String hello() {
         return "Hello, Spring!";
+    }
+
+    @GetMapping("goodbye")
+    @ResponseBody
+    public String hello() {
+        return "Peace-out, Spring!";
     }
 }
 
