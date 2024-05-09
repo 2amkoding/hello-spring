@@ -2,10 +2,7 @@ package org.launchcode.hellospring.controllers;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
@@ -25,7 +22,7 @@ public class HelloController {
 
     //Handles DYNAMIC rqsts of the form /song?name=BBLDRIZZY
     //Passes @RequesetParam as an argument of controller method
-    @GetMapping("song")
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST},value="song")
     @ResponseBody
     public String helloWQueryParam(@RequestParam String name){
         return "Hello, " + name + " !";
@@ -37,5 +34,18 @@ public class HelloController {
     public String helloWPathParam(@PathVariable String name) {
         return "Hello, " + name + "!";
     }
-    
+
+    @GetMapping("form")
+    @ResponseBody
+    public String helloForm(){
+        return "<html>" +
+                "<body>" +
+                "<form action='song' method='post'>" + //tells submit a rqst to /song
+                "<input type='text' name='name'>" +
+                "<input type='submit' value='Greet me!'>" +
+                "</form>" +
+                "</body>" +
+                "</html>";
+    }
+
 }
